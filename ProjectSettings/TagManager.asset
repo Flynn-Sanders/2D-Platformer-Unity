@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Death
+  - L1Finish
+  - L2Finish
   layers:
   - Default
   - TransparentFX
