@@ -17,10 +17,6 @@ public class DetectCollision : MonoBehaviour
     }
     void Update()
     {
-        if (transform.position.y < -15f)
-        {
-            ReloadScene();
-        }
     }
 
     private void ReloadScene()
