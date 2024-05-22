@@ -8,6 +8,8 @@ public class DetectCollision : MonoBehaviour
 {
     public string kill;
     public string NextLevel;
+    public string PortalIn;
+    public string PortalOut;
     
     
     private void OnCollisionEnter2D(Collision2D other)
@@ -20,6 +22,11 @@ public class DetectCollision : MonoBehaviour
         if (other.gameObject.CompareTag(NextLevel))
         {
             NextScene();
+        }
+        if (other.gameObject.CompareTag(PortalIn))
+        {
+            // Teleport the player to the destination
+            TeleportToDestination();
         }
     }
     void Update()
@@ -38,5 +45,21 @@ public class DetectCollision : MonoBehaviour
 
         // Load the next scene (assuming scenes are ordered in build settings)
         SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+    private void TeleportToDestination()
+    {
+        // Find the GameObject with the destination tag
+        GameObject destination = GameObject.FindGameObjectWithTag(PortalOut);
+        
+        // Check if destination is found
+        if (destination != null)
+        {
+            // Move the player to the destination position
+            transform.position = destination.transform.position;
+        }
+        else
+        {
+            Debug.LogError("Destination not found!");
+        }
     }
 }
