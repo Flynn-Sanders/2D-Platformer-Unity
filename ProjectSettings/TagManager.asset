@@ -8,6 +8,8 @@ TagManager:
   - EndLevel
   - IN
   - OUT
+  - Key
+  - Door
   layers:
   - Default
   - TransparentFX
