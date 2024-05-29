@@ -10,6 +10,9 @@ public class DetectCollision : MonoBehaviour
     public string NextLevel;
     public string PortalIn;
     public string PortalOut;
+    public string Key;
+    public string Door;
+    private bool hasKey = false;
     
     
     private void OnCollisionEnter2D(Collision2D other)
@@ -28,6 +31,16 @@ public class DetectCollision : MonoBehaviour
             // Teleport the player to the destination
             TeleportToDestination();
         }
+        if (other.gameObject.CompareTag(Key))
+        {
+            hasKey = true;
+            Destroy(other.gameObject); // Destroy the key object
+        }
+        if (hasKey && other.gameObject.CompareTag(Door))
+        {
+            Destroy(other.gameObject); // Destroy the door object
+        }
+        
     }
     void Update()
     {
